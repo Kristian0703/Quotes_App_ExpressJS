@@ -14,6 +14,36 @@ function showNotification(message) {
   }, 3000);
 }
 
+function makeColumnsResizable(table) {
+  const thElements = table.querySelectorAll("th");
+
+  thElements.forEach((th) => {
+    const resizer = document.createElement("div");
+    resizer.classList.add("resizer");
+    th.appendChild(resizer);
+    resizer.addEventListener("mousedown", initResize);
+
+    function initResize(e) {
+      document.addEventListener("mousemove", resize);
+      document.addEventListener("mouseup", stopResize);
+    }
+
+    function resize(e) {
+      const rect = th.getBoundingClientRect();
+      const newWidth = e.clientX - rect.left;
+      if (newWidth > 40) {
+        th.style.width = newWidth + "px";
+      }
+    }
+
+    function stopResize() {
+      document.removeEventListener("mousemove", resize);
+      document.removeEventListener("mouseup", stopResize);
+    }
+  });
+}
+
+
 function fetchAndRenderQuotes() {
   fetch(apiUrl)
     .then((res) => res.json())
@@ -119,3 +149,8 @@ cancelBtn.addEventListener("click", () => {
 });
 
 fetchAndRenderQuotes();
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetchAndRenderQuotes();
+  makeColumnsResizable(document.getElementById("quotes-table"));
+});
