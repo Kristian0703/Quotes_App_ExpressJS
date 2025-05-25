@@ -33,16 +33,23 @@ app.post("/api/quotes", (req, res) => {
   const { quote, person, year } = req.query;
 
   if (quote && person) {
-    const newQuote = { quote, person };
-    if (year) {
-      newQuote.year = year;
-    }
+    const newId =
+      quotes.length > 0 ? Math.max(...quotes.map((q) => q.id || 0)) + 1 : 1;
+
+    const newQuote = {
+      id: newId,
+      quote,
+      person,
+      ...(year && { year }),
+    };
+
     quotes.push(newQuote);
     res.status(201).send({ quote: newQuote });
   } else {
     res.status(400).send();
   }
 });
+
 
 app.put("/api/quotes/:id", (req, res) => {
   const quoteId = parseInt(req.params.id);

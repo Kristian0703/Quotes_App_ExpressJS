@@ -65,3 +65,151 @@ button:hover {
 .quote-text {
   font-style: italic;
 }
+
+table {
+  width: 90%;
+  max-width: 1000px;
+  border-collapse: collapse;
+  margin: 20px auto;
+  background-color: #1e3a8a;
+  color: #fff;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: center;
+  border: 1px solid #fff;
+}
+
+th {
+  background-color: #14328f;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  background-color: #2e4a99;
+  border: 1px solid #fff;
+  color: white;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  background-color: #3f5fd2;
+}
+
+button.edit, button.delete {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px;
+}
+
+button.edit:hover, button.delete:hover {
+  color: #ffcc00;
+}
+
+td input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  background-color: #2e4a99;
+  border: 1px solid #ccc;
+  color: white;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+td input[type="text"]:disabled {
+  background-color: #2e4a99;
+  border: 1px solid #ccc;
+  color: white;
+}
+
+td input[type="text"]:not(:disabled) {
+  background-color: #3c60d1;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background-color: #1e3a8a;
+  border: 2px solid white;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  width: 300px;
+}
+
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.button.confirm, .button.cancel {
+  background-color: #2e4a99;
+  color: white;
+  padding: 10px 20px;
+  border: 1px solid white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.button.confirm:hover {
+  background-color: #5788fa;
+}
+
+.button.cancel:hover {
+  background-color: #444;
+}
+
+/* Hidden class */
+.hidden {
+  display: none;
+}
+
+/* Notification Styles */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #2e4a99;
+  border: 2px solid #fff;
+  padding: 15px 20px;
+  color: white;
+  border-radius: 5px;
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.notification.show {
+  display: block;
+  animation: fadeout 3s forwards;
+}
+
+@keyframes fadeout {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; display: none; }
+}
